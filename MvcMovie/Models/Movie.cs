@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace MvcMovie.Models
 {
     public class Movie
     {
-        public int ID { get; set; } // This is the primary key (unique).
+        public int ID { get; set; }
         public string Title { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode =true)]
         public DateTime ReleaseDate { get; set; }
+        [Required(ErrorMessage = "Genre required")]
         public string Genre { get; set; }
+        [Required(ErrorMessage = "Price required")]
         public decimal Price { get; set; }
+        
     }
 }
