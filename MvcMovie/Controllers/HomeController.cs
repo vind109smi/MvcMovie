@@ -12,19 +12,19 @@ namespace MvcMovie.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View("Movie");
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "CSIS 4135 Web App Engineering";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "CSIS 4135 Web App Engineering";
 
             return View();
         }
@@ -33,5 +33,7 @@ namespace MvcMovie.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+      
     }
 }

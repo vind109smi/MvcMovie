@@ -15,15 +15,15 @@ namespace MvcMovie.Migrations
             columns: table => new
             {
 
-                id = table.Column<int>(nullable: false),
-                genre = table.Column<string>(nullable: true),
-                price = table.Column<decimal>(nullable: false),
-                releasedate = table.Column<DateTime>(nullable: true), // could have tba release date that might indicate null. 
-                title = table.Column<string>(nullable: true)
+                ID = table.Column<int>(nullable: false),
+                Genre = table.Column<string>(nullable: true),
+                Price = table.Column<decimal>(nullable: false),
+                ReleaseDate = table.Column<DateTime>(nullable: true), // could have tba release date that might indicate null. 
+                Title = table.Column<string>(nullable: true)
                  },
                 constraints: table =>
                 {
-                table.PrimaryKey("pk_movie", x => x.id);
+                table.PrimaryKey("PK_Movie", x => x.ID);
                 });
             }
 

@@ -31,5 +31,10 @@ namespace MvcMovie.Migrations
             migrationBuilder.DropTable(
                 name: "Movie");
         }
+
+        internal static void EnsureCreated(IServiceProvider applicationServices)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

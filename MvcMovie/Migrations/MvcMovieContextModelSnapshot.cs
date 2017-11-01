@@ -29,13 +29,13 @@ namespace MvcMovie.Migrations
 
                 b.Property<decimal>("Price");
 
-               b.Property<DateTime>("releasedate");
+               b.Property<DateTime>("ReleaseDate");
 
-               b.Property<string>("title");
+               b.Property<string>("Title");
 
-                b.HasKey("id");
+                b.HasKey("ID");
 
-                b.ToTable("movie");
+                b.ToTable("Movie");
             });
 #pragma warning restore 612, 618
 
