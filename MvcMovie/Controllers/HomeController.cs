@@ -12,7 +12,7 @@ namespace MvcMovie.Controllers
     {
         public IActionResult Index()
         {
-            return View("Movie");
+            return View();
         }
 
         public IActionResult About()

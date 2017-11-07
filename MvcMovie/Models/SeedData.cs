@@ -30,15 +30,7 @@ namespace MvcMovie.Models
                         Price = 8.99M
                     },
 
-                    new Movie
-                    {
-                        Title = "Spiderman: HomeComing",
-                        ReleaseDate = DateTime.Parse("2017-08-07"),
-                        Genre = "Action",
-                        Rating = "PG-13",
-                        Price = 117M
-                    },
-
+                    
                     new Movie
                     {
                         Title = "Ghostbusters 2",
@@ -46,6 +38,15 @@ namespace MvcMovie.Models
                         Genre = "Comedy",
                         Rating = "PG-13",
                         Price = 9.99M
+                    },
+
+                    new Movie
+                    {
+                        Title = "Spiderman: HomeComing",
+                        ReleaseDate = DateTime.Parse("2017-08-07"),
+                        Genre = "Action",
+                        Rating = "PG-13",
+                        Price = 117M
                     },
 
                     new Movie

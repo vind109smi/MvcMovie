@@ -53,8 +53,8 @@ namespace MvcMovie
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            Initial.EnsureCreated(app.ApplicationServices);
-            SeedData.Initialize(app.ApplicationServices);
+            //Initial.EnsureCreated(app.ApplicationServices);
+            //SeedData.Initialize(app.ApplicationServices);
         }
     }
 }
