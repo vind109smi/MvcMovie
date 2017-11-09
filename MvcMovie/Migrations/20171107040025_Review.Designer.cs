@@ -21,32 +21,7 @@ namespace MvcMovie.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MvcMovie.Models.Movie", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<string>("Rating")
-                        .IsRequired()
-                        .HasMaxLength(5);
-
-                    b.Property<DateTime>("ReleaseDate");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(60);
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Movie");
-                });
-
+           
             modelBuilder.Entity("MvcMovie.Models.Review", b =>
                 {
                     b.Property<int>("ReviewID")

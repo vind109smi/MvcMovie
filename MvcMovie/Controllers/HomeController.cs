@@ -17,14 +17,14 @@ namespace MvcMovie.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "CSIS 4135 Web App Engineering";
+            ViewData["Message"] = "Application Description";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "CSIS 4135 Web App Engineering";
+            ViewData["Message"] = "Contact Information";
 
             return View();
         }

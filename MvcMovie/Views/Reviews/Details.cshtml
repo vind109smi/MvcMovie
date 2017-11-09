@@ -1,4 +1,4 @@
-﻿@model MvcMovie.Models.Review
+﻿@model MvcMovie.Models.Movie
 
 @{
     ViewData["Title"] = "Details";
@@ -7,30 +7,42 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Review</h4>
+    <h4>Movie</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Detail)
+            @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Detail)
+            @Html.DisplayFor(model => model.Title)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.ReleaseDate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.ReleaseDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Movie)
+            @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Movie.Title)
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
         </dd>
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", "Reviews", new { id = Model.ReviewID }) |
-    @Html.ActionLink("Delete", "Delete", "Reviews", new { id = Model.ReviewID })
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>
