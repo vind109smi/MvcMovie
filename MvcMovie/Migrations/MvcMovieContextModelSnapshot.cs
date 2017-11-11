@@ -45,34 +45,6 @@ namespace MvcMovie.Migrations
 
                     b.ToTable("Movie");
                 });
-
-            modelBuilder.Entity("MvcMovie.Models.Review", b =>
-                {
-                    b.Property<int>("ReviewID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Detail")
-                        .IsRequired();
-
-                    b.Property<int>("MovieID");
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.HasKey("ReviewID");
-
-                    b.HasIndex("MovieID");
-
-                    b.ToTable("Review");
-                });
-
-            modelBuilder.Entity("MvcMovie.Models.Review", b =>
-                {
-                    b.HasOne("MvcMovie.Models.Movie", "Movie")
-                        .WithMany()
-                        .HasForeignKey("MovieID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
 #pragma warning restore 612, 618
         }
     }

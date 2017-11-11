@@ -11,8 +11,8 @@ using System;
 namespace MvcMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20171107040025_Review")]
-    partial class Review
+    [Migration("20171111033259_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,33 +21,30 @@ namespace MvcMovie.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-           
-            modelBuilder.Entity("MvcMovie.Models.Review", b =>
+            modelBuilder.Entity("MvcMovie.Models.Movie", b =>
                 {
-                    b.Property<int>("ReviewID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Detail")
-                        .IsRequired();
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasMaxLength(30);
 
-                    b.Property<int>("MovieID");
+                    b.Property<decimal>("Price");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Rating")
+                        .IsRequired()
+                        .HasMaxLength(5);
 
-                    b.HasKey("ReviewID");
+                    b.Property<DateTime>("ReleaseDate");
 
-                    b.HasIndex("MovieID");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
-                    b.ToTable("Review");
-                });
+                    b.HasKey("ID");
 
-            modelBuilder.Entity("MvcMovie.Models.Review", b =>
-                {
-                    b.HasOne("MvcMovie.Models.Movie", "Movie")
-                        .WithMany()
-                        .HasForeignKey("MovieID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.ToTable("Movie");
                 });
 #pragma warning restore 612, 618
         }

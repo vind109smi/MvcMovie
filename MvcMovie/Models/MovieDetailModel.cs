@@ -8,6 +8,6 @@ namespace MvcMovie.Models
     public class MovieDetailModel
     {
         public Movie movie { get; set; }
-        public List<Review> reviews { get; set; }
+        
     }
 }

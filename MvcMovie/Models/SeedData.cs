@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -23,30 +21,30 @@ namespace MvcMovie.Models
                 context.Movie.AddRange(
                     new Movie
                     {
+                        Title = "When Harry Met Sally",
+                        ReleaseDate = DateTime.Parse("1989-1-11"),
+                        Genre = "Romantic Comedy",
+                        Rating = "PG-13",
+                        Price = 7.99M
+                    },
+
+
+                    new Movie
+                    {
                         Title = "Ghostbusters",
                         ReleaseDate = DateTime.Parse("1984-3-13"),
                         Genre = "Comedy",
                         Rating = "PG-13",
-                        Price = 8.99M
+                        Price = 7.99M
                     },
 
-                    
                     new Movie
                     {
                         Title = "Ghostbusters 2",
                         ReleaseDate = DateTime.Parse("1986-2-23"),
                         Genre = "Comedy",
                         Rating = "PG-13",
-                        Price = 9.99M
-                    },
-
-                    new Movie
-                    {
-                        Title = "Spiderman: HomeComing",
-                        ReleaseDate = DateTime.Parse("2017-08-07"),
-                        Genre = "Action",
-                        Rating = "PG-13",
-                        Price = 117M
+                        Price = 13.99M
                     },
 
                     new Movie
