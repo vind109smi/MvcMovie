@@ -29,6 +29,9 @@ namespace MvcMovie.Controllers
             var movies = from m in _context.Movie
                          select m;
 
+            var reviews = from m in _context.Review
+                          select m;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Title.Contains(searchString));
@@ -39,11 +42,19 @@ namespace MvcMovie.Controllers
                 movies = movies.Where(x => x.Genre == movieGenre);
             }
 
+            var movieDetailVM = new MovieDetailModel();
+            movieDetailVM.mReview = new SelectList(await genreQuery.Distinct().ToListAsync());
+            movieDetailVM.reviews = await reviews.ToListAsync();
+
             var movieGenreVM = new MovieGenreViewModel();
             movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync());
             movieGenreVM.movies = await movies.ToListAsync();
 
-            return View(movieGenreVM);
+            var movieReviewModelVM = new MovieReviewModel();
+            movieReviewModelVM.MGenre = movieGenreVM;
+            movieReviewModelVM.MReviewDetail = movieDetailVM;
+
+            return View(movieReviewModelVM);
         }
 
         
@@ -51,19 +62,35 @@ namespace MvcMovie.Controllers
         // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            IQueryable<int> movieReviewQuery = from m in _context.Movie
+                                               orderby m.ID
+                                               select m.ID;
+
+            var movie = await _context.Movie
+                .SingleOrDefaultAsync(m => m.ID == id);
+
+            var reviews = from m in _context.Review
+                          select m;
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            var movie = await _context.Movie
-                .SingleOrDefaultAsync(m => m.ID == id);
+            
             if (movie == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            var movieDetailVM = new MovieDetailModel();
+            movieDetailVM.movie = movie;
+            movieDetailVM.mReview = new SelectList(await movieReviewQuery.Distinct().ToListAsync());
+            movieDetailVM.reviews = await reviews.ToListAsync();
+
+            ViewData["mID"] = movie.ID;
+
+            return View(movieDetailVM);
         }
 
         // GET: Movies/Create

@@ -26,21 +26,21 @@ namespace MvcMovie.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<string>("Genre");
+                        //.IsRequired()
+                        //.HasMaxLength(30);
 
                     b.Property<decimal>("Price");
 
-                    b.Property<string>("Rating")
-                        .IsRequired()
-                        .HasMaxLength(5);
+                    b.Property<string>("Rating");
+                        //.IsRequired()
+                        //.HasMaxLength(5);
 
                     b.Property<DateTime>("ReleaseDate");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(60);
+                    b.Property<string>("Title");
+                        //.IsRequired()
+                        //.HasMaxLength(60);
 
                     b.HasKey("ID");
 
