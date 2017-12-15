@@ -7,7 +7,7 @@ namespace MvcMovie.Models
 {
     public class MovieReviewModel
     {
-        public MovieGenreViewModel MGenre { get; set; }
-        public MovieDetailModel MReviewDetail { get; set; }
+        public Movie movie { get; set; }
+        public List<Review> reviews { get; set; }
     }
 }

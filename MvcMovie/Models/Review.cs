@@ -5,7 +5,7 @@ namespace MvcMovie.Models
 {
     public class Review
     {
-        public int ReviewID { get; set; }
+        public int ID { get; set; }
 
         [Display(Name = "Comment")]
         [Required(ErrorMessage = "Detail is required")]

@@ -1,4 +1,4 @@
-﻿@model MvcMovie.Models.MovieDetailModel 
+﻿@model MvcMovie.Models.MovieReviewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -7,11 +7,70 @@
 <h2>Details</h2>
 
 <div>
-    <h2>Details</h2>
-    
-    @{Html.RenderPartial("MoviePartial", Model.movie);}
-    @{ Html.RenderPartial("ReviewPartial", Model.reviews); }
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.movie.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.movie.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.movie.ReleaseDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.movie.ReleaseDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.movie.Genre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.movie.Genre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.movie.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.movie.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.movie.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.movie.Rating)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.movie.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<br />
 
 <div>
-    @Html.ActionLink("Add a review", "Create", "Reviews", new { id = Model.movie.ID }, new { @class = "btn btn-info" })
+    <h4>Review</h4>
+    <hr />
+    @foreach (var item in Model.reviews)
+    {
+        if (!(item == null))
+        {
+            @*<dt>
+                    @Html.DisplayNameFor(model => item.Comment)
+                </dt>*@
+            <dd>
+                @Html.DisplayFor(model => item.Comment)
+                <button class="btn btnEdit" type="button" onclick="location.href='@Url.Action("Edit","Reviews",new { ID = @item.ID })'">Edit</button>
+                <button class="btn btnDelete" type="button" onclick="location.href='@Url.Action("Delete","Reviews",new { ID = @item.ID })'">Delete</button>
+            </dd>
+            @*<dt>
+                    @Html.DisplayNameFor(model => item.Name)
+                </dt>*@
+            <dd>
+                -@Html.DisplayFor(model => item.Name)
+            </dd>
+            <hr />
+        }
+    }
+    <button class="btn btnReview" type="button" onclick="location.href='@Url.Action("Create","Reviews",new { ID = Model.movie.ID })'">Add a Review</button>
 </div>

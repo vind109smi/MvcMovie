@@ -1,14 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MvcMovie.Models
+namespace MvcMovie.Models.Accounts
 {
     public class RegisterViewModel
     {
 
         [Required]
-        [StringLength(20, ErrorMessage = "Name length must be less than 20")]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        public string ScreenName { get; set; }
 
 
         [Required]

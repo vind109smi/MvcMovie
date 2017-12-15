@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
-
+using MvcMovie.Models.Accounts;
 
 
 namespace MvcMovie.Models
@@ -19,7 +18,7 @@ namespace MvcMovie.Models
 
         public DbSet<MvcMovie.Models.Movie> Movie { get; set; }
         public DbSet<MvcMovie.Models.Review> Review { get; set; }
-        public DbSet<MvcMovie.Models.ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<MvcMovie.Models.Accounts.ApplicationUser> ApplicationUser { get; set; }
         
     }
 }

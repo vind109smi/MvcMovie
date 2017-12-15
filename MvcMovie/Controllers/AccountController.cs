@@ -1,10 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using MvcMovie.Models;
+using System.Security.Claims;
+using MvcMovie.Models.Accounts;
 
 namespace MvcMovie.Controllers
 {
@@ -39,7 +38,7 @@ namespace MvcMovie.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name};
+                var user = new ApplicationUser { ScreenName = model.ScreenName, UserName = model.Email, Email = model.Email};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if(result.Succeeded)
                 {
@@ -105,7 +104,7 @@ namespace MvcMovie.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Rename()
+        public IActionResult ChangeScreenName()
         {
             return View();
         }
@@ -115,162 +114,16 @@ namespace MvcMovie.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Rename(string Name)
+        public async Task<IActionResult> ChangeScreenName(ApplicationUser model)
         {
-            ApplicationUser model = await _userManager.GetUserAsync(User);
 
-            if(User.Identity.IsAuthenticated)
-            {
-                return NotFound();
-            }
+            var user = await _userManager.GetUserAsync(User);
+            user.ScreenName = model.ScreenName;
+            await _userManager.UpdateAsync(user);
 
-            try
-            {
-                model.Name = Name;
-                await _userManager.UpdateAsync(model);
-                System.Console.WriteLine("success");
-            }
+            return RedirectToAction("Index", "Movies");
 
-            catch
-            {
-                // No catch exception implemented here
-            }
-
-            return View(model);
         }
 
     }
 }
-
-
-//        public async Task<IActionResult> Index()
-//        {
-//            return View(await _context.Movie.ToListAsync());
-//        }
-
-//        // GET: Account/Details/5
-//        public async Task<IActionResult> Details(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return NotFound();
-//            }
-
-//            var movie = await _context.Movie
-//                .SingleOrDefaultAsync(m => m.ID == id);
-//            if (movie == null)
-//            {
-//                return NotFound();
-//            }
-
-//            return View(movie);
-//        }
-
-//        // GET: Account/Create
-//        public IActionResult Create()
-//        {
-//            return View();
-//        }
-
-//        // POST: Account/Create
-//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-//        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                _context.Add(movie);
-//                await _context.SaveChangesAsync();
-//                return RedirectToAction(nameof(Index));
-//            }
-//            return View(movie);
-//        }
-
-//        // GET: Account/Edit/5
-//        public async Task<IActionResult> Edit(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return NotFound();
-//            }
-
-//            var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
-//            if (movie == null)
-//            {
-//                return NotFound();
-//            }
-//            return View(movie);
-//        }
-
-//        // POST: Account/Edit/5
-//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-//        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
-//        {
-//            if (id != movie.ID)
-//            {
-//                return NotFound();
-//            }
-
-//            if (ModelState.IsValid)
-//            {
-//                try
-//                {
-//                    _context.Update(movie);
-//                    await _context.SaveChangesAsync();
-//                }
-//                catch (DbUpdateConcurrencyException)
-//                {
-//                    if (!MovieExists(movie.ID))
-//                    {
-//                        return NotFound();
-//                    }
-//                    else
-//                    {
-//                        throw;
-//                    }
-//                }
-//                return RedirectToAction(nameof(Index));
-//            }
-//            return View(movie);
-//        }
-
-//        // GET: Account/Delete/5
-//        public async Task<IActionResult> Delete(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return NotFound();
-//            }
-
-//            var movie = await _context.Movie
-//                .SingleOrDefaultAsync(m => m.ID == id);
-//            if (movie == null)
-//            {
-//                return NotFound();
-//            }
-
-//            return View(movie);
-//        }
-
-//        // POST: Account/Delete/5
-//        [HttpPost, ActionName("Delete")]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> DeleteConfirmed(int id)
-//        {
-//            var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
-//            _context.Movie.Remove(movie);
-//            await _context.SaveChangesAsync();
-//            return RedirectToAction(nameof(Index));
-//        }
-
-//        private bool MovieExists(int id)
-//        {
-//            return _context.Movie.Any(e => e.ID == id);
-//        }
-//    }
-//}
