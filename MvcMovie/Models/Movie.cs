@@ -26,5 +26,7 @@ namespace MvcMovie.Models
 
         [Required]
         public string Rating { get; set; }
+
+        public Review review { get; set; }
     }
 }

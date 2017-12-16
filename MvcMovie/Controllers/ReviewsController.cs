@@ -56,11 +56,11 @@ namespace MvcMovie.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("movieID,Name,Comment")] Review review, int? id)
         {
-            review.MovieID = (int)id;
+            review.movieID = (int)id;
             if (ModelState.IsValid)
             {
                 var movie = await _context.Movie
-                    .SingleOrDefaultAsync(m => m.ID == review.MovieID);
+                    .SingleOrDefaultAsync(m => m.ID == review.movieID);
 
 
                 _context.Add(review);

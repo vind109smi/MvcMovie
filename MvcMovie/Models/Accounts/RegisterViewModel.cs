@@ -6,6 +6,7 @@ namespace MvcMovie.Models.Accounts
     {
 
         [Required]
+        [DisplayAttribute(Name = "ScreenName")]
         public string ScreenName { get; set; }
 
 

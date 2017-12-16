@@ -13,6 +13,8 @@ namespace MvcMovie.Models.Accounts
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        public string NewScreenName { get; set; }
+
         public bool RememberMe { get; set; }
     }
 }

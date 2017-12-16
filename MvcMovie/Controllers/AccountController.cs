@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using MvcMovie.Models.Accounts;
 
+
 namespace MvcMovie.Controllers
 {
     [Authorize]
