@@ -1,0 +1,59 @@
+﻿<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Title:
+        </dt>
+        <dd>
+            {{ movie.title }}
+        </dd>
+        <dt>
+            Release Year:
+        </dt>
+        <dd>
+            {{ movie.releaseDate | date:'MM/dd/yyyy'}}
+        </dd>
+        <dt>
+            Genre:
+        </dt>
+        <dd>
+            {{ movie.genre }}
+        </dd>
+        <dt>
+            Price:
+        </dt>
+        <dd>
+            {{ movie.price}}
+        </dd>
+        <dt>
+            Rating:
+        </dt>
+        <dd>
+            {{ movie.rating }}
+        </dd>
+    </dl>
+    <a class="btn btn-default" [routerLink]="['/movies']">
+        <span>Back to List</span>
+    </a>
+    <a class="btn btn-default" [routerLink]="['/editmovie/', movie.id]">
+        <span>Edit</span>
+    </a>
+    <a class="btn btn-default" [routerLink]="['/deletemovie/', movie.id]">
+        <span>Delete</span>
+    </a>
+
+    <div>
+        <h3>Reviews</h3>
+        <hr />
+        <!--<tbody>
+            <tr *ngFor="let review of movieReviews.Reviews">
+                <td>
+                    {{ review.Name }}
+                    <ul>{{review.Comment }}</ul>
+                </td>
+            </tr>
+        </tbody>-->
+    </div>
+</div>
